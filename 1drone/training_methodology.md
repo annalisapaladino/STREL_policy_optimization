@@ -1,4 +1,4 @@
-# Mathematical Framework for Differentiable STL Policy Training
+# Mathematical Framework for Differentiable STREL Policy Training
 
 This document details the training methodology implemented in `training/trainer.py`. The approach utilizes **Direct Policy Search via Differentiable Simulation**. Unlike standard Reinforcement Learning (e.g., PPO, REINFORCE) which treats the environment as a black box, this method exploits the differentiability of the system dynamics and the STL robustness semantics to backpropagate gradients directly from the specification to the policy parameters.
 
@@ -32,7 +32,7 @@ $$ \mathbf{u}_t = \text{tanh}(\text{MLP}_\theta(\text{flatten}(\mathbf{x}_t))) \
 
 ## 3. Signal Temporal Logic (STL) and Smooth Robustness
 
-The objective is to satisfy a spatial-temporal specification $\Phi$. We utilize the **Quantitative Semantics** (Robustness) of STL, denoted as $\rho(\Phi, \mathbf{x}_{0:T})$.
+The objective is to satisfy a spatial-temporal specification $\Phi$. We utilize the **Quantitative Semantics** (Robustness) of STREL, denoted as $\rho(\Phi, \mathbf{x}_{0:T})$.
 
 *   $\rho > 0 \implies \mathbf{x}_{0:T} \models \Phi$
 *   $\rho < 0 \implies \mathbf{x}_{0:T} \not\models \Phi$
@@ -90,7 +90,7 @@ The training loop (`train_policy_gradient`) proceeds as follows:
     *   **Update Hyperparameters:**
         *   $\beta_k \leftarrow \text{Anneal}(\beta_{start}, \beta_{end}, k)$
         *   $\sigma_k \leftarrow \text{Anneal}(\sigma_{start}, \sigma_{end}, k)$
-        *   Update STL operators globally via `Node.set_smooth_beta(\beta_k)`.
+        *   Update STREL operators globally via `Node.set_smooth_beta(\beta_k)`.
 
     *   **Rollout (Forward Pass):**
         *   Sample initial states $\mathbf{x}_0$.
